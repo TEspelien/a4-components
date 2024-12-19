@@ -1,0 +1,25 @@
+{
+  "name": "a4-components",
+  "version": "1.0.0",
+  "description": "Assignment 4 - Components\r ===",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start:backend": "node backend/index.js",
+    "start:frontend": "npm --prefix frontend run dev",
+    "start": "npm run start:backend & npm run start:frontend",
+
+    "dev": "concurrently \"npm --prefix backend start\" \"npm --prefix frontend run dev\"",
+
+    "build:backend": "echo \"No build step for backend yet.\"",
+    "build:frontend": "npm --prefix frontend run build",
+    "build": "npm run build:backend && npm run build:frontend"
+  },
+  "dependencies": {
+    "concurrently": "^7.0.0",
+    "serve": "^14.2.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
