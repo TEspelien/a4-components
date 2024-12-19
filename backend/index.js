@@ -2,23 +2,28 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
-// Middleware to parse JSON
+// Middleware to parse JSON request bodies
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// API routes
-app.get('/api', (req, res) => {
-  res.json({ message: 'Hello from Express!' });
-});
+// Routes
+const loginRouter = require('./routes/login');
+const bookmarksRouter = require('./routes/bookmarks');
 
-// Serve frontend files in production
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.use('/login', loginRouter);
+app.use('/bookmarks', bookmarksRouter);
 
+// Serve static files (frontend)
+app.use(express.static(path.join(__dirname, '../frontend')));
+
+// Fallback route to serve the login page
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+  res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
+// Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
