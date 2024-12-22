@@ -8,15 +8,14 @@
     "start:backend": "node backend/index.js",
     "start:frontend": "npm --prefix frontend run dev",
     "start": "npm run start:backend & npm run start:frontend",
-
     "dev": "concurrently \"npm --prefix backend start\" \"npm --prefix frontend run dev\"",
-
     "build:backend": "echo \"No build step for backend yet.\"",
     "build:frontend": "npm --prefix frontend run build",
     "build": "npm run build:backend && npm run build:frontend"
   },
   "dependencies": {
     "concurrently": "^7.0.0",
+    "dotenv": "^16.4.7",
     "serve": "^14.2.0"
   },
   "keywords": [],
