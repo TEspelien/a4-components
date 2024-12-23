@@ -1,4 +1,8 @@
 const { MongoClient } = require("mongodb");
+const dotenv = require('dotenv');
+
+// Load environment variables from .env one folder up
+dotenv.config({ path: '../.env' });
 const uri = process.env.MONGODB_URI; // Get the MongoDB URI from environment variables
 
 const databaseName = "bookmark-manager";

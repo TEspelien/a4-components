@@ -1,15 +1,14 @@
 const express = require('express');
-const router = express.Router();
-
 var bcrypt = require("bcryptjs"); //to encrypt passwords
-
 const { connect, disconnect, getDB } = require("../db");
 
+const router = express.Router();
 
 const usersCollectionName = "users";
 
 // POST /login route
-router.post("/login", async (req, res) => {
+router.post('/', async (req, res) => {
+
     const { username, password } = req.body;
   
     try {
@@ -56,4 +55,4 @@ router.post("/login", async (req, res) => {
     }
   });
 
-  module.exports = router;
+module.exports = router;
